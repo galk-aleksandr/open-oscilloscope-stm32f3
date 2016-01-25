@@ -16,12 +16,11 @@ body {
 
 canvas {
     background-color: aquamarine;
-    margin: 10px 20px;
     height: 500px;
     width: 1000px;
 }
 #screen {
-    background-color: pink;
+    background-color: #204020;
     flex: 10 1;
     overflow: scroll;
     /*height: 100%;*/
@@ -101,4 +100,8 @@ button {
 
 .sampling, .trigger {
     background-color: #E0E0E0
+}
+
+.gen {
+    background-color: #FFc0C0;
 }

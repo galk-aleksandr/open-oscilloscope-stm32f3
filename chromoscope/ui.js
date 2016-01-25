@@ -1,5 +1,5 @@
 var encoder = new TextEncoder();
-var colors = ["#228822", "#222288", "#888822", "#44FF44", "#4444FF", "#FFFF44" ];
+var colors = ["#226622", "#222266", "#666622", "#44FF44", "#4444FF", "#FFFF44" ];
 /**
  @type {CanvasRenderingContext2D}
  */
@@ -27,6 +27,16 @@ function drawData(data) {
         canvasCtx.lineWidth = 2;
         canvasCtx.stroke();
     }
+}
+
+function setZoom() {
+    zx = document.getElementById("x.zoom").value;
+    zy = document.getElementById("y.zoom").value;
+    var canvas = document.getElementById("canvas");
+    canvas.width = frameParam.w * zx;
+    canvas.style.width = canvas.width + "px";
+    canvas.height = frameParam.h * zy;
+    canvas.style.height = canvas.height + "px";
 }
 
 function scanControls() {
@@ -115,10 +125,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     _addListener(".paramInput", "change", setParamFromInput);
+    _addListener(".paramScreen", "change", setZoom);
     _addListener(".wheelSelect", "wheel", wheelSelect);
     _addListener(".vertical-picker", "click", pickVertical);
     _addListener(".inputReset", "click", inputReset);
     _addListener(".wheelChange", "wheel", wheelChange);
+    setZoom();
     initialDeviceDetect();
 });
 
