@@ -1,7 +1,9 @@
 var usbConnection = null;
 var openDevice = null;
 var cmdQueue = [];
-var frameParam = {w:2047,h:4096};
+var frameParam = {w: 2047, h: 4096};
+var encoder = new TextEncoder();
+
 /**
  @type {CanvasRenderingContext2D}
  */
@@ -14,9 +16,28 @@ function registerDevice(device) {
         if (connection) {
             openDevice = device;
             usbConnection = connection;
-            showStatus("Device opened: " + openDevice.productName + "(" + openDevice.manufacturerName + ") #" + openDevice.serialNumber);
-            scanControls();
-            runFrame();
+            chrome.usb.claimInterface(usbConnection, 0, function () {
+                chrome.usb.bulkTransfer(usbConnection, {
+                    "direction": "out",
+                    "endpoint": 2,
+                    "data": new Uint8Array(encoder.encode("CONFIG")).buffer
+                }, function (transferResult) {//todo check transfer result for errors.
+                    chrome.usb.bulkTransfer(usbConnection, {
+                        "direction": "in",
+                        "endpoint": 129,
+                        "length": 4096
+                    }, function (transferResult) {
+                        var config = String.fromCharCode.apply(null, new Uint8Array(transferResult.data));
+                        releaseUsb();
+                        showStatus("Device opened: " + openDevice.productName + "(" + openDevice.manufacturerName + ") #" + openDevice.serialNumber + "/" + config);
+                        scanControls();
+                        runFrame();
+                    })
+                });
+            });
+
+
+
         } else {
             showStatus("Device failed to open.");
         }
@@ -33,8 +54,14 @@ function onDeviceFound(devices) {
         showStatus("Permission denied.");
     }
 }
-var data = [null,null,null,null,null,null];
+var data = [null, null, null, null, null, null];
 
+function releaseUsb() {
+    chrome.usb.releaseInterface(usbConnection, 0, function () {
+        if (chrome.runtime.lastError)
+            console.warn(chrome.runtime.lastError);
+    });
+}
 function runFrame() {
 
     function startAllFrameTransfer() {
@@ -54,7 +81,7 @@ function runFrame() {
             }, function (transferResult) {
                 if (index < 3) {
                     var array = new Uint16Array(transferResult.data);
-                    if(array[0] > 0x7777 ) {
+                    if (array[0] > 0x7777) {
                         data[index] = null;
                         data[index + 3] = array;
                     } else {
@@ -62,10 +89,7 @@ function runFrame() {
                     }
                     startFrameTransfer(index + 1);
                 } else {
-                    chrome.usb.releaseInterface(usbConnection, 0, function () {
-                        if (chrome.runtime.lastError)
-                            console.warn(chrome.runtime.lastError);
-                    });
+                    releaseUsb();
                     drawData(data);
 
                     frameHandler = window.setTimeout(runFrame, 15);

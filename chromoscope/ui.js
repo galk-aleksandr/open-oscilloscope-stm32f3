@@ -1,4 +1,3 @@
-var encoder = new TextEncoder();
 var colors = ["#226622", "#222266", "#666622", "#44FF44", "#4444FF", "#FFFF44"];
 /**
  @type {CanvasRenderingContext2D}
@@ -30,7 +29,7 @@ function drawData(data) {
     canvasCtx.beginPath();
     var trigLevel = document.getElementById("trig.level");
     if (trigLevel.value != null) {
-        tY = canvasCtx.canvas.height * (1.0 - trigLevel.value / frameParam.h);
+        var tY = canvasCtx.canvas.height * (1.0 - trigLevel.value / frameParam.h);
         canvasCtx.beginPath();
         canvasCtx.moveTo(0,tY);
         canvasCtx.lineTo(canvasCtx.canvas.width,tY);
@@ -41,8 +40,8 @@ function drawData(data) {
 }
 
 function setZoom() {
-    zx = document.getElementById("x.zoom").value;
-    zy = document.getElementById("y.zoom").value;
+    var zx = document.getElementById("x.zoom").value;
+    var zy = document.getElementById("y.zoom").value;
     var canvas = document.getElementById("canvas");
     canvas.width = frameParam.w * zx;
     canvas.style.width = canvas.width + "px";

@@ -1,9 +1,8 @@
 ## Firmware
-* Frame parameters send
+* Config send
 * Generator control
 * ADC sampling time
 * External trigger
-* OPAMP follower mode
 * get rid of vertical lines
 * broken line if pre-trigger
 * Trigger histeresis
