@@ -1,5 +1,5 @@
 var encoder = new TextEncoder();
-var colors = ["#226622", "#222266", "#666622", "#44FF44", "#4444FF", "#FFFF44" ];
+var colors = ["#226622", "#222266", "#666622", "#44FF44", "#4444FF", "#FFFF44"];
 /**
  @type {CanvasRenderingContext2D}
  */
@@ -25,6 +25,17 @@ function drawData(data) {
             canvasCtx.lineTo(i * zx, (frameParam.h - array[i]) * zy);
         }
         canvasCtx.lineWidth = 2;
+        canvasCtx.stroke();
+    }
+    canvasCtx.beginPath();
+    var trigLevel = document.getElementById("trig.level");
+    if (trigLevel.value != null) {
+        tY = canvasCtx.canvas.height * (1.0 - trigLevel.value / frameParam.h);
+        canvasCtx.beginPath();
+        canvasCtx.moveTo(0,tY);
+        canvasCtx.lineTo(canvasCtx.canvas.width,tY);
+        canvasCtx.lineWidth = 1;
+        canvasCtx.strokeStyle = "#606060";
         canvasCtx.stroke();
     }
 }
@@ -57,9 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setParamFromInput(event) {
         var elm = event.srcElement;
-        console.log(elm.name + ":" +  elm.value);//todo remove
+        console.log(elm.name + ":" + elm.value);//todo remove
         var nodeList = document.querySelectorAll(".input-value[for='" + elm.name + "']");
-        for(var i = 0; i < nodeList.length; i++) nodeList[i].innerHTML = elm.value
+        for (var i = 0; i < nodeList.length; i++) nodeList[i].innerHTML = elm.value
         setParam(elm.name, elm.value)
     }
 
@@ -77,8 +88,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function wheelChange(event) {
         if (event.srcElement.value) {
             var v = event.srcElement.value - event.wheelDelta;
-            if(v < event.srcElement.min) v = event.srcElement.min;
-            if(v > event.srcElement.max) v = event.srcElement.max;
+            if (v < event.srcElement.min) v = event.srcElement.min;
+            if (v > event.srcElement.max) v = event.srcElement.max;
             event.srcElement.value = v;
             event.srcElement.dispatchEvent(new Event("change"))
         }
@@ -117,8 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function inputReset(event) {
         var elm = event.srcElement;
         var valueElement = document.getElementById(elm.getAttribute("for"));
-        if(valueElement != null)
-        {
+        if (valueElement != null) {
             valueElement.value = elm.value;
             valueElement.dispatchEvent(new Event("change"))
         }

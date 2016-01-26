@@ -102,10 +102,13 @@
     <div id="gen-control" class="flex-control gen">
         <label class="control-title" for="gen.shape">Sign. Gen</label>
         <select name="gen.shape" id="gen.shape" class="paramInput wheelSelect">
-            <option value="M" selected="selected">&#x238D;k</option>
+            <option value="N">Off</option>
+            <option value="-">&#x2501;</option>
+            <option value="M" selected="selected">&#x238D;</option>
             <option value="T">&Lambda;</option>
             <option value="S">&#8767;</option>
-            <option value="J">&#x25ff;</option>
+            <option value="J">&#x2571;&#x2502;</option>
+            <!--<option value="J">&#x25ff;</option>-->
         </select>
         <select name="gen.ampl" id="gen.ampl" class="paramInput wheelSelect">
             <option value="4095">3V</option>
@@ -160,6 +163,7 @@
             <option value="0.05">1/20</option>
         </select>
 
+<!--
         <table>
             <tr>
                 <th>Ch</th>
@@ -187,6 +191,7 @@
                 <td></td>
             </tr>
         </table>
+-->
     </div>
 </div>
 <script src="hw.js"></script>

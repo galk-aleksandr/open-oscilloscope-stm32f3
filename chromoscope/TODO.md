@@ -4,12 +4,14 @@
 * ADC sampling time
 * External trigger
 * OPAMP follower mode
+* get rid of vertical lines
+* broken line if pre-trigger
+* Trigger histeresis
 * Shield board detection?
 
 ## PC software
 * External trigger
 * Grid over canvas
-* Vertical pan?
 * Measurements
 * Help/Documentation
 * Naked board config
