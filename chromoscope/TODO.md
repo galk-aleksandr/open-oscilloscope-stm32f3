@@ -1,12 +1,11 @@
 ## Firmware
-* Config send
-* Generator control
 * ADC sampling time
-* External trigger
 * get rid of vertical lines
 * broken line if pre-trigger
 * Trigger histeresis
-* Shield board detection?
+* Shield board detection
+* Config send
+* External trigger?
 
 ## PC software
 * External trigger

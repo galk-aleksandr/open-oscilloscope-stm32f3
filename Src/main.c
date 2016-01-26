@@ -343,10 +343,6 @@ void MX_DAC_Init(void)
   sConfig.DAC_OutputBuffer = DAC_OUTPUTBUFFER_ENABLE;
   HAL_DAC_ConfigChannel(&hdac, &sConfig, DAC_CHANNEL_1);
 
-    /**Configure Triangle wave generation on DAC OUT1 
-    */
-  HAL_DACEx_TriangleWaveGenerate(&hdac, DAC_CHANNEL_1, DAC_TRIANGLEAMPLITUDE_1023);
-
 }
 
 /* OPAMP1 init function */

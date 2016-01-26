@@ -50,5 +50,12 @@ void setTriggerType(char sign);
 void setTriggerChannel(char sign);
 void setTriggerLevel(char *value, size_t length);
 void setTriggerTimeShift(char *value, size_t length);
+
+
+void setGenShape(char shape);
+void setGenBuff(char buff);
+void setGenFreq(char *value, size_t length);
+void setGenAmpl(char *value, size_t length);
+
 #endif
 

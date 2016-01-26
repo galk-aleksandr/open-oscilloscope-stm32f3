@@ -183,6 +183,7 @@ static int8_t OSCILL_Receive_FS (uint8_t* Buf, uint32_t *Len)
 	if(*Len == 6 && memcmp(Buf,"FRAME",5) == 0)
 	{
 		sendBuffer(Buf[5]);
+
 	} else if(*Len ==13 && Buf[0]=='s' && Buf[1] =='.' &&
 		memcmp (&Buf[3],".range=",7) == 0)
 	{ //s.[channel].range=[0..3/0..3]
@@ -191,8 +192,10 @@ static int8_t OSCILL_Receive_FS (uint8_t* Buf, uint32_t *Len)
 		char div = Buf[12];
 		setGain(channel,gain);
 		setDiv(channel, div);
+
 	} else if(*Len ==3 && memcmp (Buf,"t=",2) == 0) {
 		setTiming(Buf[2]);
+
 	} else if(*Len == 11 && memcmp (Buf,"trig.type=",10) == 0) {
 		setTriggerType(Buf[10]);
 	} else if(*Len == 9 && memcmp (Buf,"trig.ch=",8) == 0) {
@@ -201,10 +204,19 @@ static int8_t OSCILL_Receive_FS (uint8_t* Buf, uint32_t *Len)
 		setTriggerLevel((char*)&Buf[11],*Len - 11 );
 	} else if(*Len > 10 && memcmp (Buf,"trig.time=",10) == 0) {
 		setTriggerTimeShift((char*)&Buf[10],*Len - 10 );
+
+	} else if(*Len == 11 && memcmp (Buf,"gen.shape=",10) == 0) {
+		setGenShape(Buf[10]);
+	} else if(*Len == 10 && memcmp (Buf,"gen.buff=",9) == 0) {
+		setGenBuff(Buf[9]);
+	} else if(*Len > 9 && memcmp (Buf,"gen.ampl=",9) == 0) {
+		setGenAmpl((char*)&Buf[9],*Len - 9 );
+	} else if(*Len > 9 && memcmp (Buf,"gen.freq=",9) == 0) {
+		setGenFreq((char*)&Buf[9],*Len - 9 );
+
 	} else if(*Len == 6 && memcmp(Buf,"CONFIG",6) == 0) {
 		OSCILL_Transmit_FS(&OscillConfigDataShielded[4], * (uint32_t *)OscillConfigDataShielded);
 	}
-
   return (USBD_OK);
   /* USER CODE END 6 */ 
 }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <ProjectOpt xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="project_optx.xsd">
 
   <SchemaVersion>1.0</SchemaVersion>
@@ -45,7 +45,7 @@
         <PageWidth>79</PageWidth>
         <PageLength>66</PageLength>
         <TabStop>8</TabStop>
-        <ListingPath />
+        <ListingPath></ListingPath>
       </OPTLEX>
       <ListingPage>
         <CreateCListing>1</CreateCListing>
@@ -113,16 +113,16 @@
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
         <nTsel>11</nTsel>
-        <sDll />
-        <sDllPa />
-        <sDlgDll />
-        <sDlgPa />
-        <sIfile />
-        <tDll />
-        <tDllPa />
-        <tDlgDll />
-        <tDlgPa />
-        <tIfile />
+        <sDll></sDll>
+        <sDllPa></sDllPa>
+        <sDlgDll></sDlgDll>
+        <sDlgPa></sDlgPa>
+        <sIfile></sIfile>
+        <tDll></tDll>
+        <tDllPa></tDllPa>
+        <tDlgDll></tDlgDll>
+        <tDlgPa></tDlgPa>
+        <tIfile></tIfile>
         <pMon>STLink\ST-LINKIII-KEIL_SWO.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
@@ -139,7 +139,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>ARMDBGFLAGS</Key>
-          <Name />
+          <Name></Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -161,53 +161,240 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>218</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134246090</Address>
+          <LineNumber>159</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134241838</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Src\usb\usbd_oscill_if.c</Filename>
-          <ExecCommand />
-          <Expression>\\f3_oscill_Configuration\../Src/usb/usbd_oscill_if.c\218</Expression>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\159</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>194</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134245902</Address>
+          <LineNumber>149</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134242234</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Src\usb\usbd_oscill_if.c</Filename>
-          <ExecCommand />
-          <Expression>\\f3_oscill_Configuration\../Src/usb/usbd_oscill_if.c\194</Expression>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\149</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>115</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134241768</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\115</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>113</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134241766</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\113</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>150</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134242240</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\150</Expression>
+        </Bp>
+        <Bp>
+          <Number>5</Number>
+          <Type>0</Type>
+          <LineNumber>120</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134221752</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\120</Expression>
+        </Bp>
+        <Bp>
+          <Number>6</Number>
+          <Type>0</Type>
+          <LineNumber>121</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134221756</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\121</Expression>
+        </Bp>
+        <Bp>
+          <Number>7</Number>
+          <Type>0</Type>
+          <LineNumber>160</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134241844</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\160</Expression>
+        </Bp>
+        <Bp>
+          <Number>8</Number>
+          <Type>0</Type>
+          <LineNumber>114</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>9</Number>
+          <Type>0</Type>
+          <LineNumber>116</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>10</Number>
+          <Type>0</Type>
+          <LineNumber>122</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>11</Number>
+          <Type>0</Type>
+          <LineNumber>151</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>12</Number>
+          <Type>0</Type>
+          <LineNumber>161</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
+        </Bp>
+        <Bp>
+          <Number>13</Number>
+          <Type>0</Type>
+          <LineNumber>407</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>0</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>0</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression></Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>divBits[0]</ItemText>
-        </Ww>
-        <Ww>
-          <count>1</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>GPIOC</ItemText>
+          <ItemText>genBuff</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>266</SubType>
-          <ItemText>buffer</ItemText>
+          <ItemText>triggerType</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -234,14 +421,14 @@
         <aLa>0</aLa>
         <aPa1>0</aPa1>
         <AscS4>1</AscS4>
-        <aSer4>1</aSer4>
+        <aSer4>0</aSer4>
         <StkLoc>0</StkLoc>
         <TrcWin>0</TrcWin>
         <newCpu>0</newCpu>
         <uProt>0</uProt>
       </DebugFlag>
-      <LintExecutable />
-      <LintConfigFile />
+      <LintExecutable></LintExecutable>
+      <LintConfigFile></LintConfigFile>
       <bLintAuto>0</bLintAuto>
       <SystemViewers>
         <Entry>
@@ -249,28 +436,16 @@
           <WinId>35902</WinId>
         </Entry>
         <Entry>
-          <Name>System Viewer\DAC</Name>
-          <WinId>35904</WinId>
+          <Name>System Viewer\ADC4</Name>
+          <WinId>35905</WinId>
         </Entry>
         <Entry>
           <Name>System Viewer\DMA1</Name>
-          <WinId>35900</WinId>
+          <WinId>35904</WinId>
         </Entry>
         <Entry>
-          <Name>System Viewer\GPIOC</Name>
-          <WinId>35899</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\OPAMP</Name>
-          <WinId>35903</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\TIM1</Name>
-          <WinId>35901</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\TIM2</Name>
-          <WinId>35905</WinId>
+          <Name>System Viewer\TIM3</Name>
+          <WinId>35897</WinId>
         </Entry>
       </SystemViewers>
     </TargetOption>
@@ -278,7 +453,7 @@
 
   <Group>
     <GroupName>Application/User</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -333,24 +508,48 @@
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>5</FileNumber>
-      <FileType>2</FileType>
-      <tvExp>0</tvExp>
+      <FileType>1</FileType>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\oscill_config.s</PathWithFileName>
-      <FilenameWithoutPath>oscill_config.s</FilenameWithoutPath>
+      <PathWithFileName>..\Src\oscill.c</PathWithFileName>
+      <FilenameWithoutPath>oscill.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>6</FileNumber>
+      <FileType>2</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Src\oscill_config.s</PathWithFileName>
+      <FilenameWithoutPath>oscill_config.s</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>7</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\exampleConfig.txt</PathWithFileName>
-      <FilenameWithoutPath>exampleConfig.txt</FilenameWithoutPath>
+      <PathWithFileName>..\Src\nakedConfig.txt</PathWithFileName>
+      <FilenameWithoutPath>nakedConfig.txt</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>1</GroupNumber>
+      <FileNumber>8</FileNumber>
+      <FileType>5</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Src\shieldedConfig.txt</PathWithFileName>
+      <FilenameWithoutPath>shieldedConfig.txt</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -364,7 +563,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>7</FileNumber>
+      <FileNumber>9</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -374,17 +573,41 @@
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>10</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Drivers\CMSIS\DSP_Lib\Source\FastMathFunctions\arm_sin_q15.c</PathWithFileName>
+      <FilenameWithoutPath>arm_sin_q15.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>11</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Drivers\CMSIS\DSP_Lib\Source\CommonTables\arm_common_tables.c</PathWithFileName>
+      <FilenameWithoutPath>arm_common_tables.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
   </Group>
 
   <Group>
     <GroupName>Drivers/STM32F3xx_HAL_Driver</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>8</FileNumber>
+      <FileNumber>12</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -396,7 +619,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>9</FileNumber>
+      <FileNumber>13</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -408,7 +631,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>10</FileNumber>
+      <FileNumber>14</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -420,7 +643,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>11</FileNumber>
+      <FileNumber>15</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -432,7 +655,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>12</FileNumber>
+      <FileNumber>16</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -444,7 +667,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>13</FileNumber>
+      <FileNumber>17</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -456,7 +679,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>14</FileNumber>
+      <FileNumber>18</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -468,7 +691,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>15</FileNumber>
+      <FileNumber>19</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -480,7 +703,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>16</FileNumber>
+      <FileNumber>20</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -492,7 +715,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>17</FileNumber>
+      <FileNumber>21</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -504,7 +727,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>18</FileNumber>
+      <FileNumber>22</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -516,7 +739,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>19</FileNumber>
+      <FileNumber>23</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -528,7 +751,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>20</FileNumber>
+      <FileNumber>24</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -540,9 +763,9 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>21</FileNumber>
+      <FileNumber>25</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\Drivers\STM32F3xx_HAL_Driver\Src\stm32f3xx_hal_pcd_ex.c</PathWithFileName>
@@ -552,7 +775,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>22</FileNumber>
+      <FileNumber>26</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -564,7 +787,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>23</FileNumber>
+      <FileNumber>27</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -576,7 +799,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>24</FileNumber>
+      <FileNumber>28</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -588,7 +811,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>25</FileNumber>
+      <FileNumber>29</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -600,7 +823,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>26</FileNumber>
+      <FileNumber>30</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -612,7 +835,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>27</FileNumber>
+      <FileNumber>31</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -624,7 +847,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>28</FileNumber>
+      <FileNumber>32</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -636,7 +859,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>29</FileNumber>
+      <FileNumber>33</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -656,7 +879,7 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>30</FileNumber>
+      <FileNumber>34</FileNumber>
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -676,54 +899,6 @@
     <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>31</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\usb\usb_device.c</PathWithFileName>
-      <FilenameWithoutPath>usb_device.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>5</GroupNumber>
-      <FileNumber>32</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\usb\usbd_conf.c</PathWithFileName>
-      <FilenameWithoutPath>usbd_conf.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>5</GroupNumber>
-      <FileNumber>33</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\usb\usbd_desc.c</PathWithFileName>
-      <FilenameWithoutPath>usbd_desc.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>5</GroupNumber>
-      <FileNumber>34</FileNumber>
-      <FileType>1</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\Src\usb\usbd_oscill_if.c</PathWithFileName>
-      <FilenameWithoutPath>usbd_oscill_if.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>5</GroupNumber>
       <FileNumber>35</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
@@ -741,6 +916,54 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
+      <PathWithFileName>..\Src\usb\usb_device.c</PathWithFileName>
+      <FilenameWithoutPath>usb_device.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>37</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Src\usb\usbd_conf.c</PathWithFileName>
+      <FilenameWithoutPath>usbd_conf.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>38</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Src\usb\usbd_desc.c</PathWithFileName>
+      <FilenameWithoutPath>usbd_desc.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>39</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\Src\usb\usbd_oscill_if.c</PathWithFileName>
+      <FilenameWithoutPath>usbd_oscill_if.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>40</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
       <PathWithFileName>..\Src\usb\usbd_core.c</PathWithFileName>
       <FilenameWithoutPath>usbd_core.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -748,7 +971,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>37</FileNumber>
+      <FileNumber>41</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -760,7 +983,7 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>38</FileNumber>
+      <FileNumber>42</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>

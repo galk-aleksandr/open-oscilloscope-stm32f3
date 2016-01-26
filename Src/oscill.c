@@ -2,6 +2,7 @@
 #include "stdbool.h"
 #include "oscill.h"
 #include "usbd_oscill_if.h"
+#include "arm_math.h"
 
 uint16_t bufferA[FRAME_SIZE + 1];
 uint16_t bufferB[FRAME_SIZE + 1];
@@ -138,7 +139,6 @@ void initOscill() {
 	HAL_ADC_Start_DMA(&hadc4, (uint32_t*)&bufferC[1], FRAME_SIZE);
 	HAL_TIM_Base_Start(&htim1);
 	HAL_TIM_Base_Start(&htim2);
-	HAL_DAC_Start(&hdac, DAC_CHANNEL_1);
 	HAL_OPAMP_Start(&hopamp1);
 	HAL_OPAMP_Start(&hopamp3);
 	HAL_OPAMP_Start(&hopamp4);
@@ -284,6 +284,91 @@ void setTiming(char t){
 	htim1.Instance->CNT = 0;
 	clearKeyFrames();
 	//TODO ADC SAMPLING TIME
+}
+
+#define GEN_DMA_LENGTH 720
+static uint16_t genDmaBuf[GEN_DMA_LENGTH];
+static char genShape='N';
+static char genBuff;
+static int genFreq;
+static int genAmpl;
+
+
+void genFillConst(uint16_t ampl, uint16_t * buffer, size_t len)
+{
+	for(size_t i = 0; i < len; i++) {
+		buffer[i] = ampl;
+	}
+}
+
+void genFillTriangle() {
+	for(size_t i = 0; i <= GEN_DMA_LENGTH / 2; i++) {
+		genDmaBuf[i] = genDmaBuf[GEN_DMA_LENGTH - i] = (genAmpl * i) / (GEN_DMA_LENGTH / 2);
+	}
+}
+
+void genFillSine() {
+	for(size_t i = 0; i < GEN_DMA_LENGTH ; i++) {
+		int32_t s = arm_sin_q15(0x7FFFL * i / GEN_DMA_LENGTH);
+		genDmaBuf[i] = s * genAmpl / 2 / 0x8000L  + genAmpl / 2;
+	}
+}
+
+void genFillSawtooth() {
+	for(size_t i = 0; i < GEN_DMA_LENGTH ; i++) {
+		genDmaBuf[i] = (genAmpl * i) / GEN_DMA_LENGTH;
+	}
+}
+
+static void setupGen() {
+	HAL_DAC_Stop(&hdac, DAC_CHANNEL_1);
+	switch(genShape) {
+		case '-'://const voltage
+			genFillConst(genAmpl, genDmaBuf, GEN_DMA_LENGTH);
+			break;
+		case 'M': //Meander
+			genFillConst(0, genDmaBuf, GEN_DMA_LENGTH / 2);
+			genFillConst(genAmpl, &genDmaBuf[GEN_DMA_LENGTH / 2], GEN_DMA_LENGTH / 2);
+			break;
+		case 'T': //Triangle
+			genFillTriangle();
+			break;
+		case 'J'://Sawtooth
+			genFillSawtooth();
+			break;
+		case 'S':
+			genFillSine();
+			break;
+		default: return;//case 'N'
+	}
+	htim2.Instance->ARR = 100000 / genFreq;
+	htim2.Instance->CNT = 0;
+	if(genBuff == 't' || genBuff == 'T')
+	{
+		hdac.Instance->CR &= ~DAC_CR_BOFF1;
+	} else {
+		hdac.Instance->CR |= DAC_CR_BOFF1;
+	}
+	HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_1, (uint32_t*)genDmaBuf, GEN_DMA_LENGTH, DAC_ALIGN_12B_R);
+}
+
+void setGenShape(char shape) {
+	genShape = shape;
+	setupGen();
+}
+
+void setGenBuff(char buff) {
+	genBuff = buff;
+	setupGen();
+}
+
+void setGenFreq(char *value, size_t length) {
+	genFreq = parseDecimal(value,length);
+	setupGen();
+}
+void setGenAmpl(char *value, size_t length) {
+	genAmpl = parseDecimal(value,length);
+	setupGen();
 }
 
 void sendBuffer(char channel) {
