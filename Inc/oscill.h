@@ -11,7 +11,8 @@
 
 #define FRAME_SIZE 2047
 
-extern uint8_t OscillConfigData[];
+extern uint8_t OscillConfigDataNaked[];
+extern uint8_t OscillConfigDataShielded[];
 extern uint16_t bufferA[FRAME_SIZE + 1];
 extern uint16_t bufferB[FRAME_SIZE + 1];
 extern uint16_t bufferC[FRAME_SIZE + 1];

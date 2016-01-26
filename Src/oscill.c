@@ -217,21 +217,33 @@ void setDiv(char channel_letter, char d) {
 }
 
 void setGain(char opamp_letter, char g) {
-	uint32_t gainBits;
-	switch(g) {
-			case '1': gainBits = OPAMP_PGA_GAIN_4; break;
-			case '2': gainBits = OPAMP_PGA_GAIN_8; break;
-			case '3': gainBits = OPAMP_PGA_GAIN_16; break;
-			default: gainBits = OPAMP_PGA_GAIN_2; break;
-	}
-	OPAMP_TypeDef * opamp;
+	OPAMP_HandleTypeDef * opamp;
 	switch(opamp_letter) {
-		case	'a': opamp = hopamp1.Instance; break;
-		case	'b': opamp = hopamp3.Instance; break;
-		case	'c': opamp = hopamp4.Instance; break;
+		case	'a': opamp = &hopamp1; break;
+		case	'b': opamp = &hopamp3; break;
+		case	'c': opamp = &hopamp4; break;
 		default: return;
 	}
-	opamp->CSR = (opamp->CSR & ~OPAMP_CSR_PGGAIN) | gainBits;
+	opamp->Init.Mode = OPAMP_PGA_MODE;
+	switch(g) {
+			case '0': 
+					opamp->Init.PgaGain = OPAMP_PGA_GAIN_2;
+				break;
+			case '1': 
+					opamp->Init.PgaGain = OPAMP_PGA_GAIN_4;
+				break;
+			case '2':
+					opamp->Init.PgaGain = OPAMP_PGA_GAIN_8; 
+				break;
+			case '3': 
+					opamp->Init.PgaGain = OPAMP_PGA_GAIN_16; 
+				break;
+			default: 
+					opamp->Init.Mode = OPAMP_FOLLOWER_MODE;
+				break;
+	}
+	HAL_OPAMP_Init(opamp);
+	HAL_OPAMP_Start(opamp);
 	clearKeyFrames();
 }
 

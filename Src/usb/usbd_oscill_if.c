@@ -201,6 +201,8 @@ static int8_t OSCILL_Receive_FS (uint8_t* Buf, uint32_t *Len)
 		setTriggerLevel((char*)&Buf[11],*Len - 11 );
 	} else if(*Len > 10 && memcmp (Buf,"trig.time=",10) == 0) {
 		setTriggerTimeShift((char*)&Buf[10],*Len - 10 );
+	} else if(*Len == 6 && memcmp(Buf,"CONFIG",6) == 0) {
+		OSCILL_Transmit_FS(&OscillConfigDataShielded[4], * (uint32_t *)OscillConfigDataShielded);
 	}
 
   return (USBD_OK);
