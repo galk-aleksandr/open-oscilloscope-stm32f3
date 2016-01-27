@@ -13,7 +13,7 @@ The main idea is to build PC-oscilloscope. Hardware is ST Microelectronics devel
 * Naked Discovery(Nucleo)
  * _No overvoltage protection_
  * Input voltage: 0..3V uni-polar
-* [Shield board](#Shield-board) + Discovery(Nucleo)
+* [Shield board](#shield-board) + Discovery(Nucleo)
  * Overvoltage protection
  * Input voltage: 0..45V uni-polar
  * Input impedance ~1MOhm
