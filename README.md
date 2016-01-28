@@ -13,7 +13,7 @@ The main idea is to build PC-oscilloscope. Hardware is ST Microelectronics devel
 * Naked Discovery(Nucleo)
  * _No overvoltage protection_
  * Input voltage: 0..3V uni-polar
-* Shield board + Discovery(Nucleo)
+* [Shield board](#shield-board) + Discovery(Nucleo)
  * Overvoltage protection
  * Input voltage: 0..45V uni-polar
  * Input impedance ~1MOhm
@@ -34,6 +34,8 @@ The main idea is to build PC-oscilloscope. Hardware is ST Microelectronics devel
 * Nucleo-F303RE board support
 * External SYNC
 
-###Add-on board:
+###Shield board:
+[PCB sources](https://github.com/elmot/open-oscilloscope-stm32f3/tree/schematics)(MIT license)
+
 ![Schematics](shematic_v1.png)
 ![Board](board_v1.png)
