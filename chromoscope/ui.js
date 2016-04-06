@@ -1,4 +1,5 @@
-var colors = ["#226622", "#222266", "#666622", "#44FF44", "#4444FF", "#FFFF44"];
+var lineColors = ["#226622", "#222266", "#666622"];
+var keyLineColors = ["#44FF44", "#4444FF", "#FFFF44"];
 /**
  @type {CanvasRenderingContext2D}
  */
@@ -11,22 +12,25 @@ function showStatus(text) {
 function drawData(data) {
     canvasCtx.fillStyle = "#000000";
     canvasCtx.fillRect(0, 0, canvasCtx.canvas.width, canvasCtx.canvas.height);
-    for (var j = 0; j < data.length; j++) {
-        var array = data[j];
-        if (array == null) continue;
-        canvasCtx.strokeStyle = colors[j];
+    var zx = canvasCtx.canvas.width / frameParam.w;
+    var zy = canvasCtx.canvas.height / frameParam.h;
+
+    function drawSignal(array, startIdx, len, color) {
+        if (array == null) return;
+        canvasCtx.strokeStyle = color;
         canvasCtx.beginPath();
-        var zx = canvasCtx.canvas.width / array.length;
-        var zy = canvasCtx.canvas.height / frameParam.h;
-        //var zx = zy = 1;
-        canvasCtx.moveTo(0, zy * (frameParam.h - array[1]));
-        for (var i = 2; i < array.length; i++) {
-            canvasCtx.lineTo(i * zx, (frameParam.h - array[i]) * zy);
+        canvasCtx.moveTo(0, (frameParam.h - array[startIdx]) * zy);
+        for(var i = 1; i < len; i++) {
+            canvasCtx.lineTo(i * zx, (frameParam.h - array[i + startIdx]) * zy);
         }
         canvasCtx.lineWidth = 2;
         canvasCtx.stroke();
     }
-    canvasCtx.beginPath();
+    for(var l = 0; l < frameParam.c; l++){
+        drawSignal(data.frame, l * frameParam.w + 1, frameParam.w, lineColors[l]);
+        drawSignal(data.keyFrame, l * frameParam.w + 1, frameParam.w, keyLineColors[l]);
+    }
+
     var trigLevel = document.getElementById("trig.level");
     if (trigLevel.value != null) {
         var tY = canvasCtx.canvas.height * (1.0 - trigLevel.value / frameParam.h);

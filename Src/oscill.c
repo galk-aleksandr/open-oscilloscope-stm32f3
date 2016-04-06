@@ -4,26 +4,20 @@
 #include "usbd_oscill_if.h"
 #include "arm_math.h"
 
-uint16_t bufferA[FRAME_SIZE + 1];
-uint16_t bufferB[FRAME_SIZE + 1];
-uint16_t bufferC[FRAME_SIZE + 1];
-uint16_t bufferAT[FRAME_SIZE + 1];
-uint16_t bufferBT[FRAME_SIZE + 1];
-uint16_t bufferCT[FRAME_SIZE + 1];
+uint16_t bufferADma[BUFFER_SIZE];
+uint16_t bufferBDma[BUFFER_SIZE];
+uint16_t bufferCDma[BUFFER_SIZE];
 
-uint16_t bufferD[FRAME_SIZE + 1];
+uint16_t bufferD[FRAME_SIZE * 3 + 1];
 
 volatile bool ongoingFrameClear = false;
-/* TODO
-trig.ch
-            <!--<option value="E" DISABLED>Ext</option>-->
-Empty frames after param change
-*/
+
 char triggerType = 'R';
 char triggerChannel = 'Z';
 int triggerTimeShift = 0;
 int triggerLevel = 0;
 volatile uint32_t triggerLevelReg2 = 0xFFFFFFFF;
+
 
 ADC_HandleTypeDef * getTriggerADC(){
 	switch(triggerChannel) {
@@ -37,13 +31,9 @@ static void setupTrigger() {
 	hadc3.Instance->CFGR &= ~ADC_CFGR_AWD1EN;
 	hadc4.Instance->CFGR &= ~ADC_CFGR_AWD1EN;
 	if(triggerChannel == 'Z') {
-			bufferA[0] |= FLAG_TRIGGERED;
-			bufferB[0] |= FLAG_TRIGGERED;
-			bufferC[0] |= FLAG_TRIGGERED;
+			bufferD[0] |= FLAG_TRIGGERED;
 	} else {
-		bufferA[0] &= ~FLAG_TRIGGERED;
-		bufferB[0] &= ~FLAG_TRIGGERED;
-		bufferC[0] &= ~FLAG_TRIGGERED;
+		bufferD[0] &= ~FLAG_TRIGGERED;
 		__HAL_TIM_SetAutoreload(&htim3, FRAME_SIZE + triggerTimeShift);
 		__HAL_TIM_SetCounter(&htim3, 0);
 		ADC_HandleTypeDef * hadc = getTriggerADC();
@@ -92,26 +82,35 @@ void setTriggerTimeShift(char *value, size_t length) {
 }
 
 
-
+void copyMem(size_t dstOffset, void * src, size_t wordCount)
+{
+	memcpy(&bufferD[1 + dstOffset], src, wordCount * 2);
+}
 
 void channelTrigger() {
 	HAL_TIM_Base_Stop(&htim1);
 	HAL_TIM_Base_Stop(&htim3);
+	bufferD[0] |= FLAG_NO_DATA;
 	int counter = hadc1.DMA_Handle->Instance->CNDTR;
-
-	memcpy(&bufferAT[1],&bufferA[FRAME_SIZE - counter + 1], counter * 2);
-	memcpy(&bufferAT[counter + 1],&bufferA[1], (FRAME_SIZE - counter) * 2);
-	memcpy(&bufferBT[1],&bufferB[FRAME_SIZE - counter + 1], counter * 2);
-	memcpy(&bufferBT[counter + 1],&bufferB[1], (FRAME_SIZE - counter) * 2);
-	memcpy(&bufferCT[1],&bufferC[FRAME_SIZE - counter + 1], counter * 2);
-	memcpy(&bufferCT[counter + 1],&bufferC[1], (FRAME_SIZE - counter) * 2);
-	bufferAT[0] = FLAG_NEW | FLAG_TRIGGERED;
-	bufferBT[0] = FLAG_NEW | FLAG_TRIGGERED;
-	bufferCT[0] = FLAG_NEW | FLAG_TRIGGERED;
+	
+	if(counter + FRAME_SIZE <= BUFFER_SIZE) {
+			copyMem(             0, &bufferADma[ BUFFER_SIZE - counter - FRAME_SIZE], FRAME_SIZE);
+			copyMem(    FRAME_SIZE, &bufferBDma[ BUFFER_SIZE - counter - FRAME_SIZE], FRAME_SIZE);
+			copyMem(2 * FRAME_SIZE, &bufferCDma[ BUFFER_SIZE - counter - FRAME_SIZE], FRAME_SIZE);
+	} else {
+		  const int cnt1 = BUFFER_SIZE - counter;
+		  const int cnt2 = FRAME_SIZE - cnt1;
+			copyMem(             0, &bufferADma[BUFFER_SIZE - cnt2], cnt2);
+			copyMem(    FRAME_SIZE, &bufferBDma[BUFFER_SIZE - cnt2], cnt2);
+			copyMem(2 * FRAME_SIZE, &bufferCDma[BUFFER_SIZE - cnt2], cnt2);
+		
+			copyMem(		FRAME_SIZE - cnt1, bufferADma, cnt1);
+			copyMem(2 *	FRAME_SIZE - cnt1, bufferBDma, cnt1);
+			copyMem(3 *	FRAME_SIZE - cnt1, bufferCDma, cnt1);
+	}
+	bufferD[0] = FLAG_NEW | FLAG_TRIGGERED;
   if( ongoingFrameClear) {
-		bufferAT[0] |= FLAG_CLEAR;
-		bufferBT[0] |= FLAG_CLEAR;
-		bufferCT[0] |= FLAG_CLEAR;
+		bufferD[0] |= FLAG_CLEAR;
 	}
 	HAL_TIM_Base_Start(&htim1);
 	
@@ -134,9 +133,9 @@ void initOscill() {
 		hopamp4.Init.NonInvertingInput = OPAMP_NONINVERTINGINPUT_VP3;
 		HAL_OPAMP_Init(&hopamp4);
 	}
-	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&bufferA[1], FRAME_SIZE);
-	HAL_ADC_Start_DMA(&hadc3, (uint32_t*)&bufferB[1], FRAME_SIZE);
-	HAL_ADC_Start_DMA(&hadc4, (uint32_t*)&bufferC[1], FRAME_SIZE);
+	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)bufferADma, BUFFER_SIZE);
+	HAL_ADC_Start_DMA(&hadc3, (uint32_t*)bufferBDma, BUFFER_SIZE);
+	HAL_ADC_Start_DMA(&hadc4, (uint32_t*)bufferCDma, BUFFER_SIZE);
 	HAL_TIM_Base_Start(&htim1);
 	HAL_TIM_Base_Start(&htim2);
 	HAL_OPAMP_Start(&hopamp1);
@@ -146,17 +145,12 @@ void initOscill() {
   __HAL_TIM_CLEAR_IT(&htim3, TIM_IT_UPDATE);
 	__HAL_TIM_ENABLE_IT(&htim3, TIM_IT_UPDATE);
 	
-	bufferAT[0] = FLAG_TRIGGERED | FLAG_CLEAR;
-	bufferBT[0] = FLAG_TRIGGERED | FLAG_CLEAR;
-	bufferCT[0] = FLAG_TRIGGERED | FLAG_CLEAR;
-	setupTrigger();
+	bufferD[0] = FLAG_TRIGGERED | FLAG_CLEAR;
 }
 
 static void clearKeyFrames()
 {
-	bufferAT[0] |= FLAG_CLEAR | FLAG_NEW;
-	bufferBT[0] |= FLAG_CLEAR | FLAG_NEW;
-	bufferCT[0] |= FLAG_CLEAR | FLAG_NEW;
+	bufferD[0] |= FLAG_CLEAR | FLAG_NEW;
 	ongoingFrameClear = true;
 }
 typedef struct {
@@ -371,36 +365,16 @@ void setGenAmpl(char *value, size_t length) {
 	setupGen();
 }
 
-void sendBuffer(char channel) {
-		uint16_t* buffer;
-		uint16_t* bufferKey;
-//__IO uint32_t *counter;
-		switch(channel) {
-			case 'B':
-				buffer = bufferB;
-				bufferKey = bufferBT;
-//				counter = &hadc1.DMA_Handle->Instance->CNDTR;
-				break;
-			case 'C': 
-				buffer = bufferC;
-				bufferKey = bufferCT;
-//				counter = &hadc3.DMA_Handle->Instance->CNDTR;
-				break;
-			default: 
-				buffer = bufferA;
-				bufferKey = bufferAT;
-//				counter = &hadc4.DMA_Handle->Instance->CNDTR;
-		}
-		if(bufferKey[0] & FLAG_NEW) {
-			bufferKey[0] &= ~FLAG_NEW;
-			buffer = bufferKey;
-//			counter = NULL;
-		}
-		if(buffer[0] & FLAG_CLEAR) {
-			OSCILL_Transmit_FS((uint8_t*)buffer, 2); 
-		} else {
-			memcpy(bufferD,buffer,sizeof(bufferD));
-//			if(counter != NULL)bufferD[FRAME_SIZE - * counter + 2] = NO_DATA;
-			OSCILL_Transmit_FS((uint8_t*)bufferD, (FRAME_SIZE + 1) * 2); 
-		}
+void sendBuffer() {
+	if(!(bufferD[0] & FLAG_NEW)) {
+		//TODO copy non-key buffer
+	}
+	if(bufferD[0] & (FLAG_CLEAR|FLAG_NO_DATA)) {
+			OSCILL_Transmit_FS((uint8_t*)bufferD, 2); 
+	} else {
+			OSCILL_Transmit_FS((uint8_t*)bufferD, 2 * (1 + 3 * FRAME_SIZE)); 
+	}
+	//TODO busy state
+	bufferD[0] |= FLAG_NO_DATA;
+	setupTrigger();
 }

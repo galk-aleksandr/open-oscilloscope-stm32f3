@@ -56,10 +56,10 @@
 /** @defgroup USBD_DESC_Private_Defines
   * @{
   */ 
-#define USBD_VID     0xE140
+#define USBD_VID     0x1209
 #define USBD_LANGID_STRING     1033
 #define USBD_MANUFACTURER_STRING     "http://elmot.xyz"
-#define USBD_PID_FS     0xDF30
+#define USBD_PID_FS     0xE116
 #define USBD_PRODUCT_STRING_FS     "F3-Oscilloscope"
 /* USER CODE BEGIN SERIALNUMBER_STRING_FS */
 #define USBD_SERIALNUMBER_STRING_FS     "0.001Alpha"

@@ -1,8 +1,15 @@
+/* Constants */
+var encoder = new TextEncoder();
+var FRAME_COMMAND = new Uint8Array(encoder.encode("FRAME")).buffer;
+var CONFIG_COMMAND = new Uint8Array(encoder.encode("CONFIG")).buffer;
+
+/* Variables */
 var usbConnection = null;
 var openDevice = null;
 var cmdQueue = [];
-var frameParam = {w: 2047, h: 4096};
-var encoder = new TextEncoder();
+var frameParam = {w: 1535, h: 4096, c: 3};
+
+var data = {keyFrame: null, frame: null};
 
 /**
  @type {CanvasRenderingContext2D}
@@ -20,7 +27,7 @@ function registerDevice(device) {
                 chrome.usb.bulkTransfer(usbConnection, {
                     "direction": "out",
                     "endpoint": 2,
-                    "data": new Uint8Array(encoder.encode("CONFIG")).buffer
+                    "data": CONFIG_COMMAND
                 }, function (transferResult) {//todo check transfer result for errors.
                     chrome.usb.bulkTransfer(usbConnection, {
                         "direction": "in",
@@ -35,7 +42,6 @@ function registerDevice(device) {
                     })
                 });
             });
-
 
 
         } else {
@@ -54,7 +60,6 @@ function onDeviceFound(devices) {
         showStatus("Permission denied.");
     }
 }
-var data = [null, null, null, null, null, null];
 
 function releaseUsb() {
     chrome.usb.releaseInterface(usbConnection, 0, function () {
@@ -65,35 +70,28 @@ function releaseUsb() {
 function runFrame() {
 
     function startAllFrameTransfer() {
-        startFrameTransfer(0);
-    }
-
-    function startFrameTransfer(index) {
         chrome.usb.bulkTransfer(usbConnection, {
             "direction": "out",
             "endpoint": 2,
-            "data": new Uint8Array(encoder.encode("FRAME" + String.fromCharCode(index + 65)).buffer).buffer
+            "data": FRAME_COMMAND
         }, function (transferResult) {//todo check transfer result for errors.
             chrome.usb.bulkTransfer(usbConnection, {
                 "direction": "in",
                 "endpoint": 129,
-                "length": 4096
+                "length": (frameParam.w * frameParam.c + 1) * 2
             }, function (transferResult) {
-                if (index < 3) {
-                    var array = new Uint16Array(transferResult.data);
-                    if (array[0] > 0x7777) {
-                        data[index] = null;
-                        data[index + 3] = array;
-                    } else {
-                        data[index] = array;
-                    }
-                    startFrameTransfer(index + 1);
+                var array = new Uint16Array(transferResult.data);
+                //noinspection JSBitwiseOperatorUsage
+                if (array[0] & 0x8000 !=0) {
+                    data.frame = null;
+                    data.keyFrame = array;
                 } else {
-                    releaseUsb();
-                    drawData(data);
-
-                    frameHandler = window.setTimeout(runFrame, 15);
+                    data.frame = array;
                 }
+                releaseUsb();
+                drawData(data);
+
+                frameHandler = window.setTimeout(runFrame, 15);
             });
         });
     }
@@ -105,9 +103,8 @@ function runFrame() {
                 "endpoint": 2,
                 "data": encoder.encode(cmdQueue.pop()).buffer
             }, commandTransfer);
-            for (var i = 0; i < data.length; i++) {
-                data[i] = null;
-            }
+            data.frame = null;
+            data.keyFrame = null;
         } else {
             startAllFrameTransfer();
         }
@@ -145,7 +142,7 @@ chrome.usb.onDeviceRemoved.addListener(function (device) {
 chrome.usb.onDeviceAdded.addListener(registerDevice);
 
 function initialDeviceDetect() {
-    chrome.usb.getDevices({"vendorId": 57664, "productId": 57136}, onDeviceFound);
+    chrome.usb.getDevices({"vendorId": 4617, "productId": 57622}, onDeviceFound);
 }
 
 

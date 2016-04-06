@@ -161,9 +161,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>159</LineNumber>
+          <LineNumber>158</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134241838</Address>
+          <Address>134241904</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -172,14 +172,14 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\Src\oscill.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\159</Expression>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\158</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>149</LineNumber>
+          <LineNumber>157</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134242234</Address>
+          <Address>134241898</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -188,14 +188,14 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\Src\oscill.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\149</Expression>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\157</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>115</LineNumber>
+          <LineNumber>151</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134241768</Address>
+          <Address>134242386</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -204,30 +204,14 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\Src\oscill.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\115</Expression>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\151</Expression>
         </Bp>
         <Bp>
           <Number>3</Number>
           <Type>0</Type>
-          <LineNumber>113</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>134241766</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\Src\oscill.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\113</Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
           <LineNumber>150</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134242240</Address>
+          <Address>134242378</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -239,11 +223,11 @@
           <Expression>\\f3_oscill_Configuration\../Src/oscill.c\150</Expression>
         </Bp>
         <Bp>
-          <Number>5</Number>
+          <Number>4</Number>
           <Type>0</Type>
-          <LineNumber>120</LineNumber>
+          <LineNumber>94</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134221752</Address>
+          <Address>134241640</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -252,124 +236,60 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\Src\oscill.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\120</Expression>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\94</Expression>
+        </Bp>
+        <Bp>
+          <Number>5</Number>
+          <Type>0</Type>
+          <LineNumber>375</LineNumber>
+          <EnabledFlag>0</EnabledFlag>
+          <Address>134242582</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\Src\oscill.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\375</Expression>
         </Bp>
         <Bp>
           <Number>6</Number>
           <Type>0</Type>
-          <LineNumber>121</LineNumber>
+          <LineNumber>91</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134221756</Address>
+          <Address>0</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
+          <BreakIfRCount>0</BreakIfRCount>
           <Filename>..\Src\oscill.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\121</Expression>
+          <Expression></Expression>
         </Bp>
         <Bp>
           <Number>7</Number>
           <Type>0</Type>
-          <LineNumber>160</LineNumber>
+          <LineNumber>372</LineNumber>
           <EnabledFlag>0</EnabledFlag>
-          <Address>134241844</Address>
+          <Address>0</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
+          <BreakIfRCount>0</BreakIfRCount>
           <Filename>..\Src\oscill.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\f3_oscill_Configuration\../Src/oscill.c\160</Expression>
+          <Expression></Expression>
         </Bp>
         <Bp>
           <Number>8</Number>
           <Type>0</Type>
-          <LineNumber>114</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\Src\oscill.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>9</Number>
-          <Type>0</Type>
-          <LineNumber>116</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\Src\oscill.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>10</Number>
-          <Type>0</Type>
-          <LineNumber>122</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\Src\oscill.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>11</Number>
-          <Type>0</Type>
-          <LineNumber>151</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\Src\oscill.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>12</Number>
-          <Type>0</Type>
-          <LineNumber>161</LineNumber>
-          <EnabledFlag>0</EnabledFlag>
-          <Address>0</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\Src\oscill.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>13</Number>
-          <Type>0</Type>
-          <LineNumber>407</LineNumber>
+          <LineNumber>381</LineNumber>
           <EnabledFlag>0</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -394,7 +314,7 @@
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>266</SubType>
-          <ItemText>triggerType</ItemText>
+          <ItemText>bufferADma</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
@@ -453,7 +373,7 @@
 
   <Group>
     <GroupName>Application/User</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -557,7 +477,7 @@
 
   <Group>
     <GroupName>Drivers/CMSIS</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

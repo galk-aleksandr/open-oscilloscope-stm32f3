@@ -3,22 +3,23 @@
 
 #include "stm32f3xx_hal.h"
 
-#define FLAG_TRIGGERED 0x8000
-#define FLAG_NEW 0x4000
-#define FLAG_CLEAR 0x2000
+#define FLAG_TRIGGERED	0x8000
+#define FLAG_NEW 				0x4000
+#define FLAG_CLEAR 			0x2000
+#define FLAG_NO_DATA		0x1000
 
 #define NO_DATA 0x8000
 
-#define FRAME_SIZE 2047
+#define FRAME_SIZE 1535
+#define BUFFER_SIZE 3800
 
 extern uint8_t OscillConfigDataNaked[];
 extern uint8_t OscillConfigDataShielded[];
-extern uint16_t bufferA[FRAME_SIZE + 1];
-extern uint16_t bufferB[FRAME_SIZE + 1];
-extern uint16_t bufferC[FRAME_SIZE + 1];
-extern uint16_t bufferAT[FRAME_SIZE + 1];
-extern uint16_t bufferBT[FRAME_SIZE + 1];
-extern uint16_t bufferCT[FRAME_SIZE + 1];
+extern uint16_t bufferADma[BUFFER_SIZE];
+extern uint16_t bufferBDma[BUFFER_SIZE];
+extern uint16_t bufferCDma[BUFFER_SIZE];
+
+extern uint16_t bufferD[FRAME_SIZE * 3 + 1];
 
 extern OPAMP_HandleTypeDef hopamp1;
 extern OPAMP_HandleTypeDef hopamp3;
@@ -40,7 +41,7 @@ extern DMA_HandleTypeDef hdma_dac_ch1;
 extern UART_HandleTypeDef huart2;
 
 void initOscill(void);
-void sendBuffer(char channel_letter);
+void sendBuffer(void);
 
 void setGain(char opamp_letter, char g);
 void setTiming(char t);

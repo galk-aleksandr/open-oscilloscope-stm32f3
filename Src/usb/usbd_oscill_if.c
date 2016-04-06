@@ -180,10 +180,9 @@ static int8_t OSCILL_Control_FS  (uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t OSCILL_Receive_FS (uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
-	if(*Len == 6 && memcmp(Buf,"FRAME",5) == 0)
+	if(*Len == 5 && memcmp(Buf,"FRAME",5) == 0)
 	{
-		sendBuffer(Buf[5]);
-
+		sendBuffer();
 	} else if(*Len ==13 && Buf[0]=='s' && Buf[1] =='.' &&
 		memcmp (&Buf[3],".range=",7) == 0)
 	{ //s.[channel].range=[0..3/0..3]
